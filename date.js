@@ -30,7 +30,7 @@
  * If you are stumped, google it! This is a problem that has been solved many times over.
  */
 function getDayOfTheWeek(date) {
-    // Your Code Here!
+    // Your Code Here! 
     return "";
 }
 
