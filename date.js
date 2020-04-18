@@ -30,8 +30,11 @@
  * If you are stumped, google it! This is a problem that has been solved many times over.
  */
 function getDayOfTheWeek(date) {
-    // Your Code Here! 
-    return "";
+    let week = ["Sunday", 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    let index = date.getDay();
+    let day = week[index];
+    return day;
+
 }
 
 
@@ -76,10 +79,21 @@ function getDayOfTheWeek(date) {
  * 
  */
 function getFormattedDate(date) {
+    let year = date.getFullYear().toString().substr(-2);
     let month = date.getMonth();
-    // etc...
-    // Your Code Here!
-    return `${month}/ etc...`;
+    let dayOfMonth = date.getDate();
+    let hour = date.getHours();
+    
+    let minute = date.getMinutes();
+    let noon = 12;
+    let ampm = hour >= noon ? 'pm' : 'am' 
+  
+    //how would you write this w/o a ternary operator??
+    hour = hour % noon;
+    if (hour === 0){
+        hour = 12;
+    }
+    return `${month + 1}/${dayOfMonth}/${year} - ${hour}:${minute}${ampm}`;
 }
 
 
@@ -112,8 +126,25 @@ function getFormattedDate(date) {
  * 
  */
 function getDaysAgoString(date) {
-    // Your Code Here!
-    return "";
+    let currentDate = new Date ();
+    let timeStampNow = currentDate.getTime();
+    let timeStampDate = date.getTime();
+    let differenceInTimeStamps = (timeStampNow - timeStampDate);
+    differenceInTimeStamps = differenceInTimeStamps / (1000 * 60 * 60 *24)
+    if (differenceInTimeStamps < 1){
+        return 'Today';
+    } else if (differenceInTimeStamps >= 1 && differenceInTimeStamps < 2){
+        return 'Yesterday';
+    } else{
+        return `${differenceInTimeStamps} days ago`
+    }
+    
+
+    
+
+
+    
+
 }
 
 
@@ -156,7 +187,7 @@ function getDaysAgoString(date) {
         console.log("* Can get pm");
         let result = getFormattedDate(date);
         console.log(result)
-        console.log(result === "4/5/20 - 1:40pm");
+        console.log(getFormattedDate(date) === "4/5/20 - 1:40pm");
         console.log("* Can get midnight am");
         date.setHours(0);
         result = getFormattedDate(date);
