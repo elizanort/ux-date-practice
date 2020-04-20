@@ -83,11 +83,9 @@ function getFormattedDate(date) {
     let month = date.getMonth();
     let dayOfMonth = date.getDate();
     let hour = date.getHours();
-    
     let minute = date.getMinutes();
     let noon = 12;
     let ampm = hour >= noon ? 'pm' : 'am' 
-  
     //how would you write this w/o a ternary operator??
     hour = hour % noon;
     if (hour === 0){
@@ -183,11 +181,11 @@ function getDaysAgoString(date) {
     console.log("-----Tests for getFormattedDate-----");
 
     {
-        let date = new Date("Sun Apr 05 2020 13:40:31 GMT-0700 (Pacific Daylight Time)");
+        let date = new Date("Sun Apr 05 2020 13:40:31");
         console.log("* Can get pm");
         let result = getFormattedDate(date);
         console.log(result)
-        console.log(getFormattedDate(date) === "4/5/20 - 1:40pm");
+        console.log(result === "4/5/20 - 1:40pm");
         console.log("* Can get midnight am");
         date.setHours(0);
         result = getFormattedDate(date);
